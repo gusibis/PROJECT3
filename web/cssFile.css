@@ -1,0 +1,59 @@
+.bodyDiv{
+    text-align: center;
+    animation: multicolor 7s infinite, vibrate 3s infinite ;
+    font-weight: bolder;
+    color:red;
+}
+.onPageMessage{
+  color:blue;
+  font-size: 25px;
+  font-weight: bolder;
+}
+
+
+@keyframes vibrate {
+    1% { transform: translate(0); }
+    20% { transform: translate(-2px, 2px); }
+    99% { transform: translate(0); }
+    40% { transform: translate(-2px, -2px); }
+    60% { transform: translate(2px, 2px); }
+    20% { transform: translate(-2px, 2px); }
+    30% { transform: translate(1px, -3px); }
+    70% { transform: translate(3px, -1px); }
+    80% { transform: translate(2px, -2px); }
+    90% { transform: translate(0); }
+    90% { transform: translate(-2px, 2px); }
+  }
+  
+   @keyframes multicolor {
+      0% {
+          background-color:   #f1f0f2 ;
+       } 
+      58% {
+        background-color:  #f3f0ef ;
+      }
+      30% {
+        background-color: #e1f3f3;
+      } 
+      45% {
+        background-color:  #f0f7ee ;
+      } 
+       60% {
+        background-color:   #f4f6f6 ;
+      }
+      62% {
+        background-color:  #fbf9f3;
+      }
+      61% {
+        background-color:  #f4f1ee;
+      }
+      72% {
+        background-color:  #e4f8e6;
+      }
+      88% {
+        background-color:  #f4d0d2;
+      }
+      100% {
+        background-color:   #f8f3fc ;
+      }
+  } 
