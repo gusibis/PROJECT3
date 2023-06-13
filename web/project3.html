@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="UTF-8">
@@ -6,111 +6,128 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <link rel="shortcut icon" href="#">
         <link href="cssFile.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+            integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+            crossorigin=""
+        />
+        <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+            integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+            crossorigin="">
+        </script>
         <script type="text/javascript" src="eel.js"></script>
-        <script src="https://d3js.org/d3.v5.min.js"></script>
         <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+        <script type="text/javascript" src="logic.js"></script>
+
         <title>PROJECT-3</title>
     </head>
 
-    <body>
-        <div class="bodyDiv" id="content">
-            THIS IS WHERE WE WILL PUT THE STUFF 
+    <body id="this_body">
+        <div style="display:inline-block"id="onPageMessage" class="onPageMessage"></div>
+        <button style="display:inline-block" class="button-7"  title="DELETES AND REDOWNLOADS THE DATA" onclick="preDeleteDatabaseHTML();">DOWNLOAD DATA</button><br>
+        <div style="display:inline-block; margin-right: 1100px;">
+        <div style="display:inline-block">
+            <label class="label1">SELECT STATE:</label>
+            <select style="display:inline-block"title="Select State" id="selState" onchange="stOptionChanged(this.value)"></select>
         </div>
-        <div class="bodyDiv" id="content1">
-            THIS IS WHERE WE WILL PUT MORE STUFF 
         </div>
-        <div class="bodyDiv" id="content2">
-            THIS IS WHERE WE WILL PUT SOME MORE STUFF 
-            <br>
-            <br>
-            <br>
-            INSPECT THE PAGE AND REFRESH IT TO SEE THE DATA IN THE CONSOLE.
-            <br>
-            <br>
-            <button title="THIS BUTON WHILE WE CREATE THE DB" onclick="eel.updateDatabase()();">UPDATE DATABASE</button>
-            <div class="bodyDiv" id="content3">
-                THIS BUTTON WHILE WE FINISH THE DATABASE
-            </div>
-            <br>
-            <div id="onPageMessage" class="onPageMessage"></div>
-        </div>
-        <br>
         <br>
         <div>
-            <select id="selDataset" onchange="optionChanged(this.value)"></select>
+            <div style="display:inline-block; width: 750px; height: 550px;" id="mapDiv">
+                <canvas id="mapCanvas"></canvas>
+            </div>
+            <div  style="display:inline-block;" class="bodyDiv sortable" id="table"></div>
+            <div style="display:inline-block;" class="bodyDiv" id="plot3"></div>
         </div>
+        <br>
+        <label class="label1">SELECT YEAR:</label>
+        <select style="display:inline-block"title="Select Year" id="selYear" onchange="optionChanged(this.value)"></select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <br>
+        <div id="plotDiv" style="width: 100%;">
+            <div style="display:inline-block;" class="bodyDiv" id="plot"></div>
+            <div style="display:inline-block;" class="bodyDiv" id="plot2"></div>
+        </div>
+        <br>
     </body>
+</html> -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" href="#">
+    <link href="cssFile.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin="">
+        </script>
+    <script type="text/javascript" src="eel.js"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script type="text/javascript" src="logic.js"></script>
+    <title>PROJECT-3</title>
+</head>
+<title>Obesity Prevalence By State</title>
+<body id="this_body">
+    
+    <div style="display:inline-block" id="onPageMessage" class="onPageMessage"></div>
+    <button style="display:inline-block" class="button-7" title="DELETES AND REDOWNLOADS THE DATA"
+        onclick="preDeleteDatabaseHTML();">DOWNLOAD DATA</button><br>
+    <div style="display:inline-block; margin-right: 1100px;">
+        <div style="display:inline-block">
+            <label style="display:inline-block" id="label1" class="label1">SELECT STATE:</label>
+            <label  style="display:inline-block;"id="label2"class="label1">SELECT YEAR:</label>
+        </div>
+        <br><br>
+            <select style="display:inline-block; "title="Select State" id="selState" onchange="stOptionChanged(this.value)"></select>
+            <select style="display:inline-block;margin-left: 200px;" title="Select Year" id="selYear"onchange="optionChanged(this.value)"></select>
+            <br>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="container"></div>
+        <div class="center" style="display: flex; justify-content: center;">
+            <div style="display:inline-block; width: 750px; height: 550px;" id="mapDiv">
+                <canvas id="mapCanvas"></canvas>
+            </div>
+        </div>
+        <div class="container"></div>
+    </div>
+    <div class="row">
+        <div class="container"></div>
+        <div style="display: flex; justify-content: center;">
+            <div class="bodyDiv" id="plot3"></div>
+        </div>
+        <br>
+        <div style="display: flex; justify-content: center;">
+            <div class="bodyDiv sortable" id="table"></div>
+        </div>
+        <br>
+        <div class="container"></div>
+    </div>
+    </div>
+    <br>
+    
+      <div id="plotDiv" style="width: 100%; display: flex; justify-content: center;">
+        <div class="bodyDiv" id="plot"></div><br>
+        <div class="bodyDiv" id="plot2"></div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+  
+    <div id="bottom">------------</div>
+    <br>
+</body>
 </html>
-
-
-<script>
-    window.onload =  getDataFromPython;
-
-    eel.expose(getDataFromPython)
-    async function getDataFromPython() {
-    var data = await eel.collectData()();
-        if (data === "EXISTS"){
-            var data = await eel.readDataBase()();
-        }
-        iterateDict(data);
-    };
-
-    eel.expose(popAlert)
-    function popAlert(text) {
-        alert(text);
-    };
-
-    function iterateDict(data){
-        console.log(data);
-    };
-
-    eel.expose(updateMessage)
-    function updateMessage(message) {
-        document.getElementById("onPageMessage").innerHTML = message;
-    };
-
-    function createBarChart(xval, yval, labels) {
-        let layout = {
-            title: " Top 10 OTUs",
-            margin: { t: 30, l: 150 },
-        }
-        var plotData = [{
-            x:  xval,
-            y:   yval,
-            text: labels,
-            name: "Belly Flora",
-            type: "bar",
-            orientation: "h",
-            marker: { color: "cyan-blue" },
-        }]
-        Plotly.newPlot("bar", plotData, layout);
-    };
-    d3.select('#selDataset').on("change", function() {
-        subJectId = this.value; 
-        // document.getElementById("sample-metadata").innerText = ""
-        // document.getElementById("bar").innerText = ""
-        // document.getElementById("bubble").innerText = ""
-        // console.log(subJectId);
-        var indx = Number(subJectId);
-        let metadataObject = data.metadata.find(o => o.id === indx);
-        let obj = data.metadata.find(o => o.id === indx);
-        let sampleValues = data.samples;
-        var sampleValuesFiltered = sampleValues.filter(obj => obj.id == subJectId);
-        var s = sampleValuesFiltered[0];
-        var otuIds = s.otu_ids;
-        var sampplevalues = s.sample_values;
-        washingFrequency = obj["wfreq"] ;
-        xval = s.sample_values.slice(0, 10).reverse()
-        yval =  s.otu_ids.slice(0, 10).map(val=>"OTU " + val).reverse()
-        labels = s.otu_labels.slice(0, 10).reverse()
-         // console.log(xval);
-        for (const [key, value] of Object.entries(obj)) {
-            let addDemoData = d3.select('.panel-body').append('h5');
-            addDemoData.text(`${key}:  ${value}`)
-          }
-        createBarChart(xval, yval, labels);
-        createBubbleChart(sampplevalues, labels, otuIds, "Belly Button Sample Values");
-        createGaugeChart(washingFrequency);
-    });
-
-</script>

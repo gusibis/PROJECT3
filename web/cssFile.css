@@ -1,17 +1,153 @@
+
+#label1{
+  position: fixed; 
+  /* margin-left: 10em; */
+  margin-right : 10px;
+  display:inline-block
+}
+#label2{
+  position: fixed; 
+  margin-left: 10em;
+  margin-right : 10em;
+  display:inline-block
+}
+#selYear{
+  position: fixed; 
+  margin-left: 10em;
+  margin-right : 10em;
+  display:inline-block
+}
+#selState{
+  position: fixed; 
+  display:inline-block
+}
+table.sortable thead {
+  background-color:#eee;
+  color:#666666;
+  font-weight: bold;
+  cursor: default;
+}
+#table {
+   height: 500px; 
+   max-width: 750px;
+   max-height: 500px;
+   overflow: scroll;
+   color: black;
+   resize: both;
+
+  }
+.header{
+  font: bold 13px Arial;
+  font-weight: bold;
+  text-decoration: none;
+  background-color: #EEEEEE;
+  color: #333333;
+  padding: 2px 6px 2px 6px;
+  border-top: 1px solid #CCCCCC;
+  border-right: 1px solid #333333;
+  border-bottom: 1px solid #333333;
+  border-left: 1px solid #CCCCCC;
+}
+.header:hover{
+  font-size: 16px;
+  font-weight: 600;
+  /* color: #fff; */
+  background-color: #a5aaf0;
+  cursor: pointer;
+  margin: 20px;
+  height: 35px;
+  text-align:center;
+  border: none;
+  background-size: 150% 100%;
+}
+
 .bodyDiv{
     text-align: center;
-    animation: multicolor 7s infinite, vibrate 3s infinite ;
     font-weight: bolder;
     color:red;
+    margin-top: 5px;
 }
 .onPageMessage{
-  color:blue;
+  color:rgb(247, 0, 0);
   font-size: 25px;
   font-weight: bolder;
 }
+.label1{
+  color:rgb(250, 5, 5);
+  font-size: 20px;
+  font-weight: bolder;
+}
 
+html, body {
+  width: 100%;
+  height:100%;
+}
 
-@keyframes vibrate {
+body {
+    background: linear-gradient(-45deg, #f7cabe, #f4f8d9, #d9f2fb, #d0f2ea);
+    background-size: 400% 400%;
+    animation: gradient 10s ease infinite;
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    25% {
+      background-position: 15% 35%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    75% {
+      background-position: 75% 88%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.button-7 {
+  background-color: #0095ff;
+  border: 1px solid transparent;
+  border-radius: 3px;
+  box-shadow: rgba(255, 255, 255, .4) 0 1px 0 0 inset;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-family: -apple-system,system-ui,"Segoe UI","Liberation Sans",sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.15385;
+  margin: 0;
+  outline: none;
+  padding: 8px .8em;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: baseline;
+  white-space: nowrap;
+}
+
+.button-7:hover,
+.button-7:focus {
+  background-color: #07c;
+}
+
+.button-7:focus {
+  box-shadow: 0 0 0 4px rgba(0, 149, 255, .15);
+}
+
+.button-7:active {
+  background-color: #0064bd;
+  box-shadow: none;
+}
+
+/* @keyframes vibrate {
     1% { transform: translate(0); }
     20% { transform: translate(-2px, 2px); }
     99% { transform: translate(0); }
@@ -56,4 +192,4 @@
       100% {
         background-color:   #f8f3fc ;
       }
-  } 
+  }  */
